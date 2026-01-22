@@ -1,20 +1,15 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Sixpack Typescript Generator Example
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+## How to get started with this project:
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
-
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+1. Signup at https://app.sixpack.dev/
+2. Go to [settings](https://app.sixpack.dev/account/config) and download private key and certificate to `./config`
+3. Set the following environment variables:
+    - `SIXPACK_ACCOUNT` - your account name (available in the [settings](https://app.sixpack.dev/account/config))
+    - `SIXPACK_AUTH_TOKEN` - token from the [settings](https://app.sixpack.dev/account/config) page
+    - `SIXPACK_CLIENT_CERT_PATH=config/generator.pem` - path to the certificate,
+    - `SIXPACK_CLIENT_KEY_PATH=config/generator.key` - path to the private key
+    - `SIXPACK_ENVIRONMENT` - you can set this to anything. It determines what environment should this be visible under
+    - `SIXPACK_URL=gen.sixpack.dev:443` - URL of the Sixpack server
+4. run `npm build`
+5. run `npm start`

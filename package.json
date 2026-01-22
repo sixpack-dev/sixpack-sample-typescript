@@ -1,0 +1,28 @@
+{
+  "name": "sixpack-sample-typescript",
+  "version": "1.0.0",
+  "description": "TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/example-supplier.js",
+    "dev": "ts-node src/example-supplier.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@ssh.dev.azure.com:v3/pumpitup/Sixpack/sixpack-sample-typescript"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "sixpack-sdk": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
