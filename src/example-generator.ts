@@ -13,12 +13,18 @@ type InvoiceRequest = s.infer<typeof inputSchema>
 // Define the output schema
 const outputSchema = {
     invoiceId: s.string(),
+    language: s.string(),
+    amount: s.number(),
+    vatId: s.string(),
+    terms: s.string()
 }
 
 // Define the generate function
 function generate(input: InvoiceRequest): s.infer<typeof outputSchema> {
     const randomId = String(Date.now() % 1000)
-    return { invoiceId: randomId }
+    const vatId = input.vatId ?? 'N/A'
+    const terms = input.extendedTerm ? 'Extended Terms' : 'Standard Terms'
+    return { invoiceId: randomId, language:  input.language, amount: input.amountToBill ?? 0, vatId: vatId, terms: terms }
 }
 
 // Define the generator item
