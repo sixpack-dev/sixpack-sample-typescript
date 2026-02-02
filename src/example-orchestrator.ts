@@ -1,5 +1,4 @@
-import { type OrchestratorItem, type OrchestratorContext, s } from 'sixpack-sdk/item'
-import {fileURLToPath} from "node:url";
+import { type OrchestratorContext, type OrchestratorItem, s, urlToPath } from 'sixpack-sdk/item';
 
 // Define the input schema
 const inputSchema = {
@@ -46,7 +45,7 @@ export async function generate(
 }
 
 export const invoiceOrchestrator: OrchestratorItem = {
-    generatePath: fileURLToPath(import.meta.url), // Path to this file
+    generatePath: urlToPath(import.meta.url), // Path to this file
     metadata: {
         name: 'User with Invoice',
         inputSchema,
