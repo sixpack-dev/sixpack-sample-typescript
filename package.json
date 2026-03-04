@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/example-supplier.js",
-    "dev": "ts-node src/example-supplier.ts"
+    "start": "node dist/start.js"
   },
   "keywords": [],
   "author": "",
