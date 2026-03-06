@@ -11,6 +11,7 @@
     - `SIXPACK_CLIENT_KEY_PATH=config/generator.key` - path to the private key
     - `SIXPACK_ENVIRONMENT` - you can set this to anything. It determines what environment should this be visible under
     - `SIXPACK_URL=gen.sixpack.dev:443` - URL of the Sixpack server
+    - `SIXPACK_VERBOSE=true` (optional) - disables default SDK log filtering and shows full debug logs
 4. run `npm install`
 5. run `npm run build`
 6. run `npm run start`
