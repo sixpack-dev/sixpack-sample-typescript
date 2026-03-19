@@ -1,60 +1,62 @@
 import {
-  type OrchestratorContext,
-  type OrchestratorItem,
-  s,
-  urlToPath,
+    type OrchestratorContext,
+    type OrchestratorItem,
+    s,
+    urlToPath,
 } from "sixpack-sdk/item";
+import {InvoiceOutput} from "./example-generator.js";
+import {PersonOutput} from "./example-generator-2.js";
 
 // Define the input schema
 const inputSchema = {
-  language: s.string().required(),
-  amountToBill: s.number().optional(),
-  name: s.string().optional(),
-  surname: s.string().optional(),
-  gender: s.select("MALE", "FEMALE", "NON_BINARY"),
+    language: s.string().required(),
+    amountToBill: s.number().optional(),
+    name: s.string().optional(),
+    surname: s.string().optional(),
+    gender: s.select("MALE", "FEMALE", "NON_BINARY"),
 };
 
 type PersonWithInvoiceRequest = s.infer<typeof inputSchema>;
 
 // Define the output schema
 const outputSchema = {
-  userId: s.string(),
-  amount: s.number(),
-  invoiceId: s.string(),
+    userId: s.string(),
+    amount: s.number(),
+    invoiceId: s.string(),
 };
 
 // Define the generate function
 export async function generate(
-  input: PersonWithInvoiceRequest,
-  context: OrchestratorContext,
+    input: PersonWithInvoiceRequest,
+    context: OrchestratorContext,
 ): Promise<s.infer<typeof outputSchema>> {
-  // Obtain user from another example-generator-2
-  const user = await context.obtain("BillingSupplier", "User", {
-    name: input.name,
-    surname: input.surname,
-    gender: input.gender,
-  });
+    // Obtain user from another example-generator-2
+    const user = await context.obtain<PersonOutput>("BillingSupplier", "User", {
+        name: input.name,
+        surname: input.surname,
+        gender: input.gender,
+    });
 
-  const invoice = await context.obtain("BillingSupplier", "Invoice", {
-    language: input.language,
-    amountToBill: input.amountToBill,
-  });
+    const invoice = await context.obtain<InvoiceOutput>("BillingSupplier", "Invoice", {
+        language: input.language,
+        amountToBill: input.amountToBill,
+    });
 
-  return {
-    userId: user.id,
-    invoiceId: invoice.invoiceId,
-    amount: invoice.amountToBill,
-  };
+    return {
+        userId: user.id,
+        invoiceId: invoice.invoiceId,
+        amount: invoice.amount,
+    };
 }
 
 export const invoiceOrchestrator: OrchestratorItem = {
-  generatePath: urlToPath(import.meta.url), // Path to this file
-  metadata: {
-    name: "User with Invoice",
-    inputSchema,
-    outputSchema,
-    reportIssueEmail: "dev@sixpack.dev",
-    description: "Orchestrates invoice generation with user data",
-  },
-  templates: [{ input: { language: "English", gender: "FEMALE" }, minimum: 5 }],
+    generatePath: urlToPath(import.meta.url), // Path to this file
+    metadata: {
+        name: "User with Invoice",
+        inputSchema,
+        outputSchema,
+        reportIssueEmail: "dev@sixpack.dev",
+        description: "Orchestrates invoice generation with user data",
+    },
+    templates: [{input: {language: "English", gender: "FEMALE"}, minimum: 5}],
 };

@@ -1,7 +1,5 @@
 declare namespace NodeJS {
   interface ProcessEnv {
-    PORT: string;
-    DB_URL: string;
     SIXPACK_URL: string;
     SIXPACK_ACCOUNT: string;
     SIXPACK_ENVIRONMENT: string;

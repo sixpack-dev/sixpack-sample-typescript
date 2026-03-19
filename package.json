@@ -13,7 +13,7 @@
   "type": "module",
   "dependencies": {
     "dotenv": "^17.2.3",
-    "sixpack-sdk": "^0.4.2"
+    "sixpack-sdk": "^0.4.3"
   },
   "devDependencies": {
     "@types/node": "^25.0.10",

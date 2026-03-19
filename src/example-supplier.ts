@@ -1,22 +1,23 @@
-import { Supplier } from "sixpack-sdk";
-import { invoiceGenerator } from "./example-generator.js";
-import { userGenerator } from "./example-generator-2.js";
-import { invoiceOrchestrator } from "./example-orchestrator.js";
-
-const {
-  SIXPACK_URL,
-  SIXPACK_ACCOUNT,
-  SIXPACK_ENVIRONMENT,
-  SIXPACK_AUTH_TOKEN,
-  SIXPACK_CLIENT_KEY_PATH,
-  SIXPACK_CLIENT_CERT_PATH,
-} = process.env;
+import 'dotenv/config';
+import {Supplier} from "sixpack-sdk";
+import {invoiceGenerator} from "./example-generator.js";
+import {userGenerator} from "./example-generator-2.js";
+import {invoiceOrchestrator} from "./example-orchestrator.js";
 
 async function main() {
-  const supplier = new Supplier({
-    name: "BillingSupplier",
-    reportIssueEmail: "developer@sixpack.dev",
-  })
+    const {
+        SIXPACK_URL,
+        SIXPACK_ACCOUNT,
+        SIXPACK_ENVIRONMENT,
+        SIXPACK_AUTH_TOKEN,
+        SIXPACK_CLIENT_KEY_PATH,
+        SIXPACK_CLIENT_CERT_PATH,
+    } = process.env;
+
+    const supplier = new Supplier({
+        name: "BillingSupplier",
+        reportIssueEmail: "developer@sixpack.dev",
+    })
     .withGenerators(invoiceGenerator, userGenerator)
     .withOrchestrators(invoiceOrchestrator)
     .withSixpackUrl(SIXPACK_URL)
@@ -26,7 +27,7 @@ async function main() {
     .withClientCertificatePath(SIXPACK_CLIENT_CERT_PATH)
     .withClientKeyPath(SIXPACK_CLIENT_KEY_PATH);
 
-  await supplier.bootstrap();
+    await supplier.bootstrap();
 }
 
 main().catch(console.error);
