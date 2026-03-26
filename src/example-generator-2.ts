@@ -1,4 +1,4 @@
-import {type GeneratorItem, s} from "sixpack-sdk/item";
+import {defineGeneratorItem, s} from "sixpack-sdk/item";
 
 // Define the input schema
 const inputSchema = {
@@ -28,7 +28,7 @@ function generate(input: PersonRequest): s.infer<typeof outputSchema> {
 }
 
 // Define the generator item
-export const userGenerator: GeneratorItem = {
+export const userGenerator = defineGeneratorItem({
     generate,
     metadata: {
         name: "User",
@@ -36,4 +36,4 @@ export const userGenerator: GeneratorItem = {
         outputSchema,
         reportIssueEmail: "developer@sixpack.dev",
     },
-};
+});

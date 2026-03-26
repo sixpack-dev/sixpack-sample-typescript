@@ -1,6 +1,6 @@
 import {
+    defineOrchestratorItem,
     type OrchestratorContext,
-    type OrchestratorItem,
     s,
     urlToPath,
 } from "sixpack-sdk/item";
@@ -49,7 +49,7 @@ export async function generate(
     };
 }
 
-export const invoiceOrchestrator: OrchestratorItem = {
+export const invoiceOrchestrator = defineOrchestratorItem({
     generatePath: urlToPath(import.meta.url), // Path to this file
     metadata: {
         name: "User with Invoice",
@@ -59,4 +59,4 @@ export const invoiceOrchestrator: OrchestratorItem = {
         description: "Orchestrates invoice generation with user data",
     },
     templates: [{input: {language: "English", gender: "FEMALE"}, minimum: 5}],
-};
+});
