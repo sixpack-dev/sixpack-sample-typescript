@@ -31,13 +31,13 @@ export async function generate(
     context: OrchestratorContext,
 ): Promise<s.infer<typeof outputSchema>> {
     // Obtain user from another example-generator-2
-    const user = await context.obtain<PersonOutput>("BillingSupplier", "User", {
+    const user = await context.request<PersonOutput>("BillingSupplier", "User", {
         name: input.name,
         surname: input.surname,
         gender: input.gender,
     });
 
-    const invoice = await context.obtain<InvoiceOutput>("BillingSupplier", "Invoice", {
+    const invoice = await context.request<InvoiceOutput>("BillingSupplier", "Invoice", {
         language: input.language,
         amountToBill: input.amountToBill,
     });
