@@ -3,7 +3,7 @@ import {
     type OrchestratorContext,
     s,
     urlToPath,
-} from "sixpack-sdk/item";
+} from "@sixpack-dev/sdk/item";
 import {InvoiceOutput} from "./example-generator.js";
 import {PersonOutput} from "./example-generator-2.js";
 

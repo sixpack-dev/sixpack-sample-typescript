@@ -1,13 +1,13 @@
 import 'dotenv/config';
-import {Supplier} from "sixpack-sdk";
 import {invoiceGenerator} from "./example-generator.js";
 import {userGenerator} from "./example-generator-2.js";
 import {invoiceOrchestrator} from "./example-orchestrator.js";
+import {Supplier} from "@sixpack-dev/sdk";
 
 async function main() {
     const {
         SIXPACK_URL,
-        SIXPACK_ACCOUNT,
+        SIXPACK_ORGANIZATION,
         SIXPACK_ENVIRONMENT,
         SIXPACK_AUTH_TOKEN,
         SIXPACK_CLIENT_KEY_PATH,
@@ -21,7 +21,7 @@ async function main() {
     .withGenerators(invoiceGenerator, userGenerator)
     .withOrchestrators(invoiceOrchestrator)
     .withSixpackUrl(SIXPACK_URL)
-    .withAccount(SIXPACK_ACCOUNT)
+    .withOrganization(SIXPACK_ORGANIZATION)
     .withEnvironment(SIXPACK_ENVIRONMENT)
     .withAuthToken(SIXPACK_AUTH_TOKEN)
     .withClientCertificatePath(SIXPACK_CLIENT_CERT_PATH)

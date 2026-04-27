@@ -5,7 +5,7 @@
 1. Signup at https://app.sixpack.dev/
 2. Go to [settings](https://app.sixpack.dev/account/config) and download private key and certificate to `./config`
 3. Provide the following environment variables:
-    - `SIXPACK_ACCOUNT` - your account name (available in the [settings](https://app.sixpack.dev/account/config))
+    - `SIXPACK_ORGANIZATION` - your organization name (available in the [settings](https://app.sixpack.dev/account/config))
     - `SIXPACK_AUTH_TOKEN` - token from the [settings](https://app.sixpack.dev/account/config) page
     - `SIXPACK_CLIENT_CERT_PATH=config/generator.pem` - path to the certificate,
     - `SIXPACK_CLIENT_KEY_PATH=config/generator.key` - path to the private key

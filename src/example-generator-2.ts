@@ -1,4 +1,4 @@
-import {defineGeneratorItem, s} from "sixpack-sdk/item";
+import {defineGeneratorItem, s} from "@sixpack-dev/sdk/item";
 
 // Define the input schema
 const inputSchema = {
